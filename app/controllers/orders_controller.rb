@@ -9,7 +9,7 @@ class OrdersController < ApplicationController
     end
     private
     def order_params
-        params.permit(:store_id, :flower_id, :order_total)
+        params.require(:order).permit(:store_id, :flower_id)
     end
 end
 

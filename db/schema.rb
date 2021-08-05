@@ -10,11 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_01_102337) do
+ActiveRecord::Schema.define(version: 2021_08_05_161236) do
 
   create_table "flowers", force: :cascade do |t|
     t.string "name"
     t.float "price"
+    t.string "image_url"
+    t.string "occasion"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -22,21 +24,19 @@ ActiveRecord::Schema.define(version: 2021_08_01_102337) do
   create_table "orders", force: :cascade do |t|
     t.integer "store_id"
     t.integer "flower_id"
-    t.float "order_total"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "profiles", force: :cascade do |t|
-    t.string "address"
-    t.string "image_url"
-    t.integer "store_id"
-    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "stores", force: :cascade do |t|
+    t.string "address"
+    t.string "image_url"
+    t.integer "user_id"
     t.integer "zipcode"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

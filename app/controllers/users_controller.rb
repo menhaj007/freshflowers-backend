@@ -19,6 +19,20 @@ class UsersController < ApplicationController
         end
     end
 
+    def index
+        # add validations
+        render json: User.all, status: :ok
+    end
+
+    def show
+        user = User.find_by(id: params[:id])
+        if user
+            render json: user, include: [:stores, :orders]
+        else
+            render json: {error: "User not found"}, status: :not_found
+        end
+    end
+
     private
     def user_params
         # params.permit(:email, :password, :password_confirmation)
