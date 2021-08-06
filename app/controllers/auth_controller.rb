@@ -27,6 +27,8 @@ class AuthController < ApplicationController
         else
             render json: {message: "Failed"}
         end
+        puts session[:user_id]
+        # byebug
     end
 
 

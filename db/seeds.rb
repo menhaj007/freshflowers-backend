@@ -35,6 +35,12 @@ Profile.destroy_all
 User.destroy_all
 Order.destroy_all
 
+# Store.reset_pk_sequence 
+# Flower.reset_pk_sequence 
+# Profile.reset_pk_sequence 
+# User.reset_pk_sequence 
+# Order.reset_pk_sequence 
+
 user1 = User.create(email: Faker::Internet.email, password: "password")
 user2 = User.create(email: Faker::Internet.email, password: "password")
 
@@ -49,12 +55,19 @@ flower3 = Flower.create(name: Faker::Food.vegetables , price: Faker::Number.deci
 flower4 = Flower.create(name: Faker::Food.vegetables , price: Faker::Number.decimal(l_digits: 3, r_digits: 3), image_url: "https://images.unsplash.com/photo-1476994230281-1448088947db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=934&q=80", occasion: "Birthday")
 flower5 = Flower.create(name: Faker::Food.vegetables , price: Faker::Number.decimal(l_digits: 3, r_digits: 3), image_url: "https://images.unsplash.com/photo-1561238160-3fd50893667f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80", occasion: "Summer")
 
-order1 = Order.create(:store_id => store1.id, :flower_id => flower1.id, :order_total => Faker::Number.decimal(l_digits: 3, r_digits: 3), quantity: 2)
-order2 = Order.create(:store_id => store2.id, :flower_id => flower2.id, :order_total => Faker::Number.decimal(l_digits: 3, r_digits: 3), quantity: 2)
-order3 = Order.create(:store_id => store1.id, :flower_id => flower3.id, :order_total => Faker::Number.decimal(l_digits: 3, r_digits: 3), quantity: 2)
-order4 = Order.create(:store_id => store1.id, :flower_id => flower4.id, :order_total => Faker::Number.decimal(l_digits: 3, r_digits: 3), quantity: 2)
-order5 = Order.create(:store_id => store2.id, :flower_id => flower5.id, :order_total => Faker::Number.decimal(l_digits: 3, r_digits: 3), quantity: 2)
-order6 = Order.create(:store_id => store2.id, :flower_id => flower5.id, :order_total => Faker::Number.decimal(l_digits: 3, r_digits: 3), quantity: 2)
+order1 = Order.create(:store_id => store1.id, :flower_id => flower1.id)
+order2 = Order.create(:store_id => store2.id, :flower_id => flower2.id)
+order3 = Order.create(:store_id => store1.id, :flower_id => flower3.id)
+order4 = Order.create(:store_id => store1.id, :flower_id => flower4.id)
+order5 = Order.create(:store_id => store2.id, :flower_id => flower5.id)
+order6 = Order.create(:store_id => store2.id, :flower_id => flower5.id)
+
+# order1 = Order.create(:store_id => store1.id, :flower_id => flower1.id, :order_total => Faker::Number.decimal(l_digits: 3, r_digits: 3), quantity: 2)
+# order2 = Order.create(:store_id => store2.id, :flower_id => flower2.id, :order_total => Faker::Number.decimal(l_digits: 3, r_digits: 3), quantity: 2)
+# order3 = Order.create(:store_id => store1.id, :flower_id => flower3.id, :order_total => Faker::Number.decimal(l_digits: 3, r_digits: 3), quantity: 2)
+# order4 = Order.create(:store_id => store1.id, :flower_id => flower4.id, :order_total => Faker::Number.decimal(l_digits: 3, r_digits: 3), quantity: 2)
+# order5 = Order.create(:store_id => store2.id, :flower_id => flower5.id, :order_total => Faker::Number.decimal(l_digits: 3, r_digits: 3), quantity: 2)
+# order6 = Order.create(:store_id => store2.id, :flower_id => flower5.id, :order_total => Faker::Number.decimal(l_digits: 3, r_digits: 3), quantity: 2)
 # store1 = Store.create(zipcode: Faker::Number.number(digits: 5))
 # store2 = Store.create(zipcode: Faker::Number.number(digits: 5))
 # store3 = Store.create(zipcode: Faker::Number.number(digits: 5))
@@ -133,3 +146,5 @@ order6 = Order.create(:store_id => store2.id, :flower_id => flower5.id, :order_t
 #     puts "Resetting auto increment ID for #{table} to #{ai_val}"
 #     ActiveRecord::Base.connection.execute("ALTER SEQUENCE #{table}_id_seq RESTART WITH #{ai_val}")
 #   end
+
+puts "Done seeding"

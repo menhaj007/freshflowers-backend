@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get '/stores', to: 'stores#index'
   get '/flowers', to: 'flowers#index'
   get '/users', to: 'users#index'
+  get '/users/:id/orders', to: 'orders#show'
+  get '/users/:id/store', to: 'users#store'
   
   get '/store/:id', to: 'stores#show'
   patch '/store/:id', to: 'stores#edit'

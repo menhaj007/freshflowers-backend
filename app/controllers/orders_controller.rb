@@ -7,9 +7,19 @@ class OrdersController < ApplicationController
             render json: {errors: new_order.errors.full_messages}, status: :unprocessable_entity
         end
     end
+
+    def show
+        user = User.find_by(id: params[:id])
+        if user
+            # render json: user.store.orders.to_json, except: [:store, :created_at, :updated_at]
+            render json: user.store, inlude: [:orders]
+        else
+            render json: {error: "User not found"}, status: :not_found
+        end
+    end
     private
     def order_params
-        params.require(:order).permit(:store_id, :flower_id)
+        params.require(:order).permit(:id, :store_id, :flower_id)
     end
 end
 
